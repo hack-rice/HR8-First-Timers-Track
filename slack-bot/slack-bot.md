@@ -1,4 +1,4 @@
-# Build your first Slackbot
+# Build a Slackbot
 
 **Borrowed from a Post updated by Matt Makai on December 13, 2017. Originally posted on June 04, 2016.**
 
