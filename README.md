@@ -1,1 +1,1 @@
-# HackRice 8 - First Timers Track
+# First Timers Track
