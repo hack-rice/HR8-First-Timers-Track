@@ -11,7 +11,6 @@ We will walk through setting up your development environment, obtaining a Slack 
 
 ## Tools needed
 
-Tools We Need
 Our bot, which we will name "StarterBot", requires Python and the Slack API. To run our Python code we need:
 
 * Either [Python 2 or 3](https://www.fullstackpython.com/python-2-or-3.html) (Python 2 must be at least version 2.7.9)
