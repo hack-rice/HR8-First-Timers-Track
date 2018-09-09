@@ -58,7 +58,7 @@ Activate the virtualenv (Windows):
 
 Your prompt should now look like the one in this screenshot.
 
-<img src="/img/160604-simple-python-slack-bot/virtualenv-activate.png" width="100%" class="technical-diagram img-rounded" alt="Command prompt with starterbot's virtualenv activated.">
+<img src="img/160604-simple-python-slack-bot/virtualenv-activate.png" width="100%" class="technical-diagram img-rounded" alt="Command prompt with starterbot's virtualenv activated.">
 
 The official `slackclient` API helper library built by Slack can send and
 receive messages from a Slack channel. Install the slackclient library with
