@@ -2,9 +2,7 @@
 
 ## Introduction
 
-This document will provide a step-by-step gudie to developing your first Reddit bot. We'll be using Python since it's a very beginner-friendly language and offers perhaps the simplest implementation. Alternatively, you're welcome to use JavaScript + Node.js, in which case you can find an excellent guide [here](https://blog.syntonic.io/2017/07/07/reddit-bot-nodejs-example/).
-
-There are a few components that we have to set up in order to get a functional bot. First, we need to set up a server to listen for comments on Reddit. *Flask* is a web framework built on Python, so we'll use it to greatly simplify this process. Next, we'll need to enable the bot to respond to the user's messages. We'll code the logic in Python and use the *requests* library to sent the bot's chosen response back to Facebook. We'll explain each of these steps in more detail as we go through them. 
+This document will provide a step-by-step gudie to developing your first Reddit bot. We'll be using Python since it's a very beginner-friendly language and offers perhaps the simplest implementation, mostly since there exists a very intuitive python library for Reddit's API. Alternatively, you're welcome to use JavaScript + Node.js, in which case you can find an excellent guide [here](https://blog.syntonic.io/2017/07/07/reddit-bot-nodejs-example/).
 
 
 ## Software
