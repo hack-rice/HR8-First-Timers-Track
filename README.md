@@ -9,22 +9,10 @@ In this track, you'll create a bot and integrate it with an existing platform (e
 ## Table of Contents
 * [Slack Bot](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/slack-bot)
 * [Messenger Bot](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/messenger-bot)
-* [Alexa Bot](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/alexa-bot)
-* [Twitter Bot](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/twitter-bot)
 * [Reddit Bot](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/reddit-bot)
   
   
 ## FAQ
   
-##### Question?
-Answer
-
-##### Question?
-Answer
-
-##### Question?
-Answer
-
-##### Question?
-Answer
+You can find a detailed FAQ [here](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/FAQ.md).
   
