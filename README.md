@@ -14,5 +14,5 @@ In this track, you'll create a bot and integrate it with an existing platform (e
   
 ## FAQ
   
-If you have any general questions about this track or about setting up your development environment, take a look [here](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/FAQ.md). If you're still stuck, reach out to a mentor or one of the HackRice organizers and we'll be happy to point you in the right direction.
+If you have any general questions about this track or about setting up your development environment, take a look at our [FAQ](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/FAQ.md). If you're still stuck, reach out to a mentor or one of the HackRice organizers and we'll be happy to point you in the right direction.
   
