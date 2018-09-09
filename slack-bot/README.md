@@ -70,13 +70,13 @@ When `pip` is finished you should see output like this and you'll be
 back at the prompt.
 
 
-<img src="https://github.com/jpa99/HR8-First-Timers-Track/blob/master/slack-bot/img/160604-simple-python-slack-bot/pip-install-slackclient.png" width="100%" class="technical-diagram img-rounded" alt="Output from using the pip install slackclient command with a virtualenv activated.">
+<img src="img/160604-simple-python-slack-bot/pip-install-slackclient.png" width="100%" class="technical-diagram img-rounded" alt="Output from using the pip install slackclient command with a virtualenv activated.">
 
 We also need to [create a Slack App](https://api.slack.com/apps/new) to recieve
 an API token for your bot. Use "Starter Bot" as your App name. If you are signed
 into more than one workspace, pick a Development Workspace from the dropdown.
 
-<img src="/img/160604-simple-python-slack-bot/create-slack-app.png" width="100%" class="technical-diagram img-rounded" alt="Create a Slack App form filled">
+<img src="img/160604-simple-python-slack-bot/create-slack-app.png" width="100%" class="technical-diagram img-rounded" alt="Create a Slack App form filled">
 
 After submitting the form, keep the app configuration page open.
 
@@ -90,7 +90,7 @@ clicking "Add a Bot User", you should choose a display name, choose a
 default username, and save your choices by clicking "Add Bot User". You'll
 end up with a page that looks like the following:
 
-<img src="/img/160604-simple-python-slack-bot/add-bot-user.png" width="100%" class="technical-diagram img-rounded" alt="Added a bot user to the Slack App">
+<img src="img/160604-simple-python-slack-bot/add-bot-user.png" width="100%" class="technical-diagram img-rounded" alt="Added a bot user to the Slack App">
 
 The `slackclient` library makes it simple to use Slack's
 [RTM API](https://api.slack.com/rtm) and [Web API](https://api.slack.com/web).
@@ -102,7 +102,7 @@ Click on the "Install App" under the "Settings" section. The button on this page
 will install the App into our Development Workspace. Once the App is installed,
 it displays a *bot user oauth access token* for authentication as the bot user.
 
-<img src="/img/160604-simple-python-slack-bot/copy-bot-access-token.png" width="100%" class="technical-diagram img-rounded" alt="After installing on the development workspace, you can copy the bot user oauth access token">
+<img src="img/160604-simple-python-slack-bot/copy-bot-access-token.png" width="100%" class="technical-diagram img-rounded" alt="After installing on the development workspace, you can copy the bot user oauth access token">
 
 A common practice for Python developers is to export secret tokens as
 environment variables. Back in your terminal, export the full Slack token with the
@@ -341,16 +341,16 @@ if __name__ == "__main__":
 Now that all of our code is in place we can run our Starter Bot on the
 command line with the `python starterbot.py` command.
 
-<img src="/img/160604-simple-python-slack-bot/starterbot-running.png" width="100%" class="technical-diagram img-rounded" alt="Console output when the StarterBot is running and connected to the API.">
+<img src="img/160604-simple-python-slack-bot/starterbot-running.png" width="100%" class="technical-diagram img-rounded" alt="Console output when the StarterBot is running and connected to the API.">
 
 In Slack, create a new channel and invite Starter Bot or invite it to an
 existing channel.
 
-<img src="/img/160604-simple-python-slack-bot/create-channel.png" width="100%" class="technical-diagram img-rounded" alt="In the Slack user interface create a new channel and invite StarterBot.">
+<img src="img/160604-simple-python-slack-bot/create-channel.png" width="100%" class="technical-diagram img-rounded" alt="In the Slack user interface create a new channel and invite StarterBot.">
 
 Now start giving Starter Bot commands in your channel.
 
-<img src="/img/160604-simple-python-slack-bot/working-starterbot2.png" width="100%" class="technical-diagram img-rounded" alt="Give StarterBot commands in your Slack channel.">
+<img src="img/160604-simple-python-slack-bot/working-starterbot2.png" width="100%" class="technical-diagram img-rounded" alt="Give StarterBot commands in your Slack channel.">
 
 
 ## Wrapping Up
