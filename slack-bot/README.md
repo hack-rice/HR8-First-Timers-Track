@@ -70,7 +70,7 @@ When `pip` is finished you should see output like this and you'll be
 back at the prompt.
 
 
-<img src="HR8-First-Timers-Track/slack-bot/img/160604-simple-python-slack-bot/pip-install-slackclient.png" width="100%" class="technical-diagram img-rounded" alt="Output from using the pip install slackclient command with a virtualenv activated.">
+<img src="https://github.com/jpa99/HR8-First-Timers-Track/blob/master/slack-bot/img/160604-simple-python-slack-bot/pip-install-slackclient.png" width="100%" class="technical-diagram img-rounded" alt="Output from using the pip install slackclient command with a virtualenv activated.">
 
 We also need to [create a Slack App](https://api.slack.com/apps/new) to recieve
 an API token for your bot. Use "Starter Bot" as your App name. If you are signed
