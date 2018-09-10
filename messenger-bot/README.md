@@ -34,7 +34,7 @@ pip3 install Flask==0.12.2
 pip3 install pymessenger==0.0.7.0
 ```
 
-## Implementation
+## Flask
 
 To begin, we’ll create a basic Flask app called `messenger-bot.py`. If you have not used Flask before, or are unfamiliar with [web frameworks](https://www.fullstackpython.com/web-frameworks.html), you should look at their [introduction](http://flask.pocoo.org/docs/0.12/quickstart/) to understand how the framework functions. 
 
@@ -56,6 +56,147 @@ Using Flask, we can create an endpoint – a fancy way of referring to a website
 You can try running the above code as it is, by entering `python3 messenger-bot.py` into terminal, and you should get a response like this:
 
 <img src="img/messenger-bot/flask-hello-world.png" width="100%" class="technical-diagram img-rounded" alt="Demonstration of basic flask app">
+
+If you navigate to the link given from running the app (in this example http://127.0.0.1:5000/) in a browser, you will see a page load that says “Hello World!” With just these few lines of code, we’ve created a web application that displays “Hello World” to any user who goes to the specified link. To build this bot, we will build off of this basic structure in order to handle a user’s request and return a response to them.
+
+## Implementation
+
+To handle sending messages back to a user who communicates with our bot, we’ll be using the PyMessenger library to handle sending responses to users. We can do this the same way we imported the flask library, by adding the following to the top of our program. We'll discuss what to put in the `ACCESS_TOKEN` field later, when you register your bot.
+
+```python
+from pymessenger.bot import Bot
+bot = Bot(ACCESS_TOKEN)
+```
+
+Since we now have the necessary Python libraries installed, it’s time to write our bot.To make the bot, we first need to handle two types of requests, GET and POST. In our case, we will use GET requests when Facebook checks the bot’s verify token. Expanding on our basic Flask app, we will go to our `receive_message()` function in `messenger-bot.py` and add the following lines of code:
+
+```python
+## Handle GET requests
+if request.method == 'GET':
+    ## Facebook requires a verify token when receiving messages
+    token_sent = request.args.get("hub.verify_token") 
+    return verify_fb_token(token_sent)
+```
+
+In this section, you might be wondering: what exactly is [hub.verify_token](https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup/#verify_webhook)? This refers to a token we will make up and also provide to Facebook that they will use to verify the bot only responds to requests sent from Messenger. We will discuss later in this article how to set up this variable.
+
+If the bot is not receiving a GET request, it is likely receiving a POST request where Facebook is sending your bot a message sent by a user. For this purpose, we will follow the if statement from above with an else that will take the data sent by Facebook and give us the message the user sent us:
+
+```python
+## Handle POST requests
+else: 
+   output = request.get_json() ## get whatever message a user sent the bot
+   for event in output['entry']:
+      messaging = event['messaging']
+      for message in messaging:
+        if message.get('message'):
+
+            ## Facebook Messenger ID for user so we know where to send response back to
+            recipient_id = message['sender']['id'] 
+
+            ## If user sends text
+            if "hackrice" in message['message'].get('text').lower():
+                response_sent_text = get_message_text() ## Generate our message
+                send_message(recipient_id, response_sent_text)
+
+return "Message Processed"
+```
+
+With these initial steps written, we move on to handle verifying a message from Facebook as well as generating and sending a response back to the user. Facebook requires that your bot have a verify token (that's `VERIFY_TOKEN` in the code below) that you also provide to them in order to ensure all requests your bot receives originated from them. As stated earlier, we'll discuss how to find this later, when you register your bot.
+
+
+```python
+def verify_fb_token(token_sent):
+    ## Verifies that the token sent by Facebook matches the token sent locally
+    if token_sent == VERIFY_TOKEN:
+        return request.args.get("hub.challenge")
+    return 'Invalid verification token'
+```
+
+We can now implement the `get_message_text()` function that we referenced within our `receive_message()` function. We'll instruct `get_message_text()` to return a String pointing the client to the HackRice website. At this level, it isn't really necessary to create a new function for just returning a String, but as your bot becomes more complex, it's easier to separate your program into distinct functions. One idea might be to add a list of possible messages with slightly different wording and return a random element from the list, to make user interaction with your bot more interesting.
+
+```python
+# Chooses a message to send to the user
+def get_message_text():
+    return "Hey, it looks like you're interested in HackRice! For more information, please visit http://hack.rice.edu"
+```
+
+Once we know what we are sending back to the user, we need to write a method that actually sends this message to the user. The PyMessenger library makes this easier for us by handling the POST requests per the [Messenger API](https://developers.facebook.com/docs/messenger-platform/send-messages#sending_text).
+
+```python
+## Send text message to recipient
+def send_message(recipient_id, response):
+    bot.send_text_message(recipient_id, response) ## Sends the 'response' parameter to the user
+    return "Message sent"
+```
+
+Now that we have all these code fragments, we can put them all together to make our bot.
+
+```python
+## Python libraries that we need to import for our bot
+from flask import Flask, request
+from pymessenger.bot import Bot ## pymessenger is a Python wrapper for the Facebook Messenger API
+
+app = Flask(__name__) ## This is how we create an instance of the Flask class for our app
+
+ACCESS_TOKEN = 'EAAbCySyie3oBAHJ6RHUPnLIjen3PKITpXup9xXy5ZBM0fHFJZA6cD1OrOu6tENYoNgz2bbqgmIYhSJdhZB55cDS8LjvVlVSonUDrPWsfhGByO3rjmH97S1zvjL4Eh6QLV0mob8b9geP5SPr8lTJ931nzUpZBi6oZAumqS6fwJcwZDZD' ## Replace 'ACCESS_TOKEN' with your access token
+VERIFY_TOKEN = 'TESTINGTOKEN' ## Replace 'VERIFY_TOKEN' with your verify token
+bot = Bot(ACCESS_TOKEN) ## Create an instance of the bot
+
+def verify_fb_token(token_sent):
+    ## Verifies that the token sent by Facebook matches the token sent locally
+    if token_sent == VERIFY_TOKEN:
+        return request.args.get("hub.challenge")
+    return 'Invalid verification token'
+
+# Chooses a message to send to the user
+def get_message_text():
+    return "Hey, it looks like you're interested in HackRice! For more information, please visit http://hack.rice.edu"
+
+## Send text message to recipient
+def send_message(recipient_id, response):
+    bot.send_text_message(recipient_id, response) ## Sends the 'response' parameter to the user
+    return "Message sent"
+
+## This endpoint will receive messages 
+@app.route("/", methods=['GET', 'POST'])
+def receive_message():
+
+    ## Handle GET requests
+    if request.method == 'GET':
+        token_sent = request.args.get("hub.verify_token") ## Facebook requires a verify token when receiving messages
+        return verify_fb_token(token_sent)
+
+    ## Handle POST requests
+    else: 
+       output = request.get_json() ## get whatever message a user sent the bot
+       for event in output['entry']:
+          messaging = event['messaging']
+          for message in messaging:
+            if message.get('message'):
+                recipient_id = message['sender']['id'] ## Facebook Messenger ID for user so we know where to send response back to
+
+                ## If user sends text
+                if "hackrice" in message['message'].get('text').lower():
+                    response_sent_text = get_message_text()
+                    send_message(recipient_id, response_sent_text)
+
+    return "Message Processed"
+
+## Ensures that the below code is only evaluated when the file is executed, and ignored if the file is imported
+if __name__ == "__main__": 
+    app.run() ## Runs application
+```
+
+## Bot Registration
+
+
+
+
+
+
+
+
 
 
 
