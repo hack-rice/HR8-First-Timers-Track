@@ -16,12 +16,12 @@ Before we begin, we need to make sure all the necessary software is installed. H
 
 ### Cygwin installation (Windows users only)
 
-Visit [this website](https://cygwin.com/install.html) to install Cygwin.  For each screen on the installer where it provides a default option, the default is fine.  However, there is one screen that asks you to "Choose A Download Site".  Any site should work; however, some work better than others.  'https://mirror.steadfast.net' works well.
+Visit [this website](https://cygwin.com/install.html) to install Cygwin.  For each screen on the installer where it provides a default option, the default is fine.  However, there is one screen that asks you to "Choose A Download Site".  Any site should work; however, some work better than others.  [This site](https://mirror.steadfast.net) works well.
 
 From this point on, whenever the tutorial says to use the terminal, you should use Cygwin instead.
 
 ### Dependencies
-Most newer versions of Python come with pip, so it should be already installed. SPecifically, we want to have pip3 installed. To check if you have pip installed already, type `which pip3` into the terminal. You should see the version number printed to the terminal if you have it.
+Most newer versions of Python come with pip, so it should be already installed. Specifically, we want to have pip3 installed. To check if you have pip installed already, type `which pip3` into the terminal. You should see the version number printed to the terminal if you have it.
 
 If you don't have pip, you can install it [here](https://pip.pypa.io/en/stable/installing/).
 
