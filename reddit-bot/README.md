@@ -131,7 +131,7 @@ Cool, now that we've got this simple bot working, there's a lot of different thi
 * Using CV to generate textual descriptions of photos from imgur links
 * Detecting questions on a programming subreddit and searching StackOverflow for answers
 
-Or, if you're up for the challenge, instead of relying on PRAW, try directly making the Reddit API calls via the `requests` library. For additional reading, feel free to check out [this website](www.reddit.com). Good Luck!
+Or, if you're up for the challenge, instead of relying on PRAW, try directly making the Reddit API calls via the `requests` library. For exploring additional functionality offered by the Reddit API, check out the [Reddit API Documentation](https://www.reddit.com/dev/api/). Good Luck!
 
 
 
