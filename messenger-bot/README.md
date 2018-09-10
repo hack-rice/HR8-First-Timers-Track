@@ -208,14 +208,29 @@ It'll ask you to log-in to your facebook account to confirm that you're linking 
 
 Now that we have our code written and the required Facebook sections filled out, we need to host our code somewhere. For this tutorial we’ll be using ngrok, a nifty tool that allows us to run code on our computer locally but make it accessible to anyone. This link will work as long as we keep the program and ngrok running on our computer. It is important to note that ngrok is meant for basic testing and should not be used to host your program when released publicly.
 
-To get started with ngrok, follow the instructions [here](https://gist.github.com/jwebcat/ecaac7bc7ee26e01cd4a).
+To get started with ngrok, follow the instructions [here](https://ngrok.com/download). This involves downloading and unzipping Ngrok, as well as creating a symlink, which allows us to run ngrok using the `ngrok` command from any directory. 
 
-Now, in order to get  our bot running publicly with Ngrok, we need to first run the app — open a Terminal window and run your app with `python3 messenger-bot.py`. Once your Flask app begins running, look for the digits (or port number) at the end of the link that you see.
+Now, in order to get  our bot running publicly with Ngrok, we need to first run the app — open a Terminal window and run your app with `python3 messenger-bot.py`. Once your Flask app begins running, look for the digits, which give the port number, at the end of the link that you see. Open a second terminal window and type
 
+```ngrok http [number]```
 
+where we replace `number` with the port number from our flask app. For example, if the link provided by flask is “http://127.0.0.1:5000/“, you would type “ngrok http 5000”). Once you do this, you should see something like this:
 
+<img src="img/messenger-bot/ngrok.png" width="100%" class="technical-diagram img-rounded" alt="Ngrok Running">
 
+You'll see two “Forwarding” sections with two different links -- one starting with "http" and the other starting with "https".  We now want to copy the link that begins with “https.” This link is what we can provide to Facebook when someone sends the bot a message.
 
+Go back to the Facebook developer screen and supply this link so that when our page receives a message, Facebook knows where to send the message to. Click the Webhooks tab and click on “Edit Subscription.” You should see a screen like this below:
+
+<img src="img/messenger-bot/webhook.png" width="100%" class="technical-diagram img-rounded" alt="Webook Set Up">
+
+For the Callback URL, copy and paste the link created by ngrok into the field.
+
+Remember the VERIFY_TOKEN placeholder we currently have in our app.py file? To protect your bot, Facebook requires you to have a verify token. When a user messages your bot, Facebook will send your bot the message along with this verify token for your Flask app to check and verify the message is an authentic request sent by Facebook. Choose a string you want to use for your verify token and replace the placeholder in the app.py file with your code, and place the same token in the `VERIFIY_TOKEN` field in your code.
+
+For the subscription fields, be sure to check the messages, messaging_postbacks, message_deliveries, messaging_pre_checkouts boxes.When you’re finished, click “Verify and Save.”
+
+Now, on the same Messenger Settings page, we need to hook the webhook to our Facebook page. Select your page and then click “Subscribe” to finish the process. Now, we're done!! You can test the bot by messaging the page while the flask app is running and you should get a reply if you mention HackRice!
 
 
 
