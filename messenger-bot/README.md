@@ -190,7 +190,27 @@ if __name__ == "__main__":
 
 ## Bot Registration
 
+We’ve written most of the code for the bot, but now we need to connect it to Facebook and make it available publicly. In order for people to message your bot, you need to create a Facebook page (and optionally an alternative Facebook account). You can follow the instructions for creating a Facebook page [here](https://www.facebook.com/business/help/104002523024878). Once you’ve made a page, go to the [Facebook for Developers](https://developers.facebook.com) website and make a developer account. Once you're logged in, click the "Add A New App" button in the top right and you should see a screen like this:
 
+<img src="img/messenger-bot/create-app.png" width="100%" class="technical-diagram img-rounded" alt="Creating a Facebook Messenger Application">
+
+Once you enter the name of your bot and your email address, you should see a Products page appear (if you're lost, just click on the "Products" label on the sidebar)
+
+<img src="img/messenger-bot/add-product.png" width="100%" class="technical-diagram img-rounded" alt="Products List for Messenger Bot">
+
+At this point, you should click the "Set Up" button on the Messenger box, indicating that you want to configure an application for Facebook Messenger. Scroll down until you reach the box titled "Token Generation" and select your page.
+
+<img src="img/messenger-bot/token-generation.png" width="100%" class="technical-diagram img-rounded" alt="Products List for Messenger Bot">
+
+It'll ask you to log-in to your facebook account to confirm that you're linking the page with the application. Once you sign in, it should generate a long alphanumeric sequence of characters under Page Access Token. Copy and paste this value into your code and use it instead of the placeholder `ACCESS_TOKEN`.
+
+## Hosting
+
+Now that we have our code written and the required Facebook sections filled out, we need to host our code somewhere. For this tutorial we’ll be using ngrok, a nifty tool that allows us to run code on our computer locally but make it accessible to anyone. This link will work as long as we keep the program and ngrok running on our computer. It is important to note that ngrok is meant for basic testing and should not be used to host your program when released publicly.
+
+To get started with ngrok, follow the instructions [here](https://gist.github.com/jwebcat/ecaac7bc7ee26e01cd4a).
+
+Now, in order to get  our bot running publicly with Ngrok, we need to first run the app — open a Terminal window and run your app with `python3 messenger-bot.py`. Once your Flask app begins running, look for the digits (or port number) at the end of the link that you see.
 
 
 
