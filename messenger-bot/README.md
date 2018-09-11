@@ -226,11 +226,32 @@ Go back to the Facebook developer screen and supply this link so that when our p
 
 For the Callback URL, copy and paste the link created by ngrok into the field.
 
-Remember the VERIFY_TOKEN placeholder we currently have in our app.py file? To protect your bot, Facebook requires you to have a verify token. When a user messages your bot, Facebook will send your bot the message along with this verify token for your Flask app to check and verify the message is an authentic request sent by Facebook. Choose a string you want to use for your verify token and replace the placeholder in the app.py file with your code, and place the same token in the `VERIFIY_TOKEN` field in your code.
+Remember the VERIFY_TOKEN placeholder we currently have in our app.py file? To protect your bot, Facebook requires you to have a verify token. When a user messages your bot, Facebook will send your bot the message along with this verify token for your Flask app to check and verify the message is an authentic request sent by Facebook. We're going to suggest that you choose "TESTINGTOKEN" as your verify token, and place the same token in the `VERIFIY_TOKEN` field in your messenger-bot.py file. For the subscription fields, be sure to check the messages, messaging_postbacks, message_deliveries, messaging_pre_checkouts boxes. When you’re finished, click “Verify and Save.”
 
-For the subscription fields, be sure to check the messages, messaging_postbacks, message_deliveries, messaging_pre_checkouts boxes.When you’re finished, click “Verify and Save.”
+Now, on the same Messenger Settings page, we need to hook the webhook to our Facebook page. Select your page and then click “Subscribe” to finish the process.
 
-Now, on the same Messenger Settings page, we need to hook the webhook to our Facebook page. Select your page and then click “Subscribe” to finish the process. Now, we're done!! You can test the bot by messaging the page while the flask app is running and you should get a reply if you mention HackRice!
+<img src="img/messenger-bot/webhook-confirmation.png" width="100%" class="technical-diagram img-rounded" alt="Webook Confirmation">
+
+Now, we can go ahead and test our bot. Using the same facebook profile that the bot is linked to, navigate to the page associated with the bot on Facebook and click "Send Message". You can then interact with the bot. Based on the logic we set up, we should only expect the bot to reply when we mention "HackRice". We can test this by verifying that it doesn't respond to non-"HackRice" text and that it does respond when we send a message containing "HackRice". 
+
+<img src="img/messenger-bot/testing-hack-rice-bot.png" width="100%" class="technical-diagram img-rounded" alt="Webook Confirmation">
+
+## Next Steps
+
+From here, there are many ways in which you can extend your bot. Some examples include 
+* Integrating NLP for a more conversational chatbot
+* Connecting to external APIs to provide a chatbot-based service (e.g. ordering pizza)
+* Searching StackOverflow for questions asked by the user
+* Maintaining a calendar and sending notifications to remind user of deadlines
+* Automate filling out a form for some external service
+* Implementing a chat-based game (Quiz/Trivia)
+* Educational chatbot for testing knowledge like flashcards
+* Matching users to chat with each other anonymously
+
+We encourage you to explore the very extensive [Facebook Messenger API Docs](https://developers.facebook.com/docs/messenger-platform/) and the services implemented by PyMessenger, to leverage the full potential of a messenger chatbot. There are a variety of different ways in which you can leverage the information we've provided to build a very functional application. Good Luck!
+
+
+
 
 
 
