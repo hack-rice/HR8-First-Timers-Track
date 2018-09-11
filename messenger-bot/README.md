@@ -250,6 +250,10 @@ From here, there are many ways in which you can extend your bot. Some examples i
 
 We encourage you to explore the very extensive [Facebook Messenger API Docs](https://developers.facebook.com/docs/messenger-platform/) and the services implemented by PyMessenger, to leverage the full potential of a messenger chatbot. There are a variety of different ways in which you can leverage the information we've provided to build a very functional application. Good Luck!
 
+# FAQ
+  
+If you have any general questions about this track or about setting up your development environment, take a look at our [FAQ](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/FAQ.md). If you're still stuck, reach out to a mentor or one of the HackRice organizers and we'll be happy to point you in the right direction.
+  
 
 
 
