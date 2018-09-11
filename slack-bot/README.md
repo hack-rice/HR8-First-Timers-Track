@@ -377,5 +377,7 @@ Check out these posts to learn what you could do:
 
 
 # FAQ
-I'm getting an error along the lines of "OSError \[Errorno 13\] Permission Denied" when I try to install Pip!
- * Try adding '--user' in the command line when running the pip install file!
+  
+If you have any general questions about this track or about setting up your development environment, take a look at our [FAQ](https://github.com/jpa99/HR8-First-Timers-Track/tree/master/FAQ.md). If you're still stuck, reach out to a mentor or one of the HackRice organizers and we'll be happy to point you in the right direction.
+  
+
